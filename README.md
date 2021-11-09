@@ -1,7 +1,5 @@
 # Concordia Bootcamp Workshop Fall 2021
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). See further down to learn more!
-
 ## Objective
 
 Your challenge is to build a newsfeed app with Contentful API from Dialogue's account.
@@ -30,66 +28,14 @@ This is a one day workshop. You are not going to build out an exact replica of D
 
 Written for users on mac, may vary slightly for PC or chromebook users. You should be on node version 16.
 
-1. Download ZIP of the repo
-2. Unzip and place wherever (for this example we're using Desktop)
-3. Navigate into the directory in your terminal `cd Desktop/concordia-fall-2021`
-4. Install the packages `yarn install`
-5. Start the app in development mode `yarn start`
-6. You should now see the base app at http://localhost:3000/
+1. Fork this repo & download the fork onto your computer
+2. Navigate into the directory in your terminal `cd Folder_where_you_placed_repo/concordia-fall-2021`
+3. Install the packages `yarn install`
+4. Start the app in development mode `yarn start`
+5. You should now see the base app at http://localhost:3000/
 
-## Available Scripts
+If you want to run unit tests, run `yarn test`.
 
-In the project directory, you can run:
+## Credit
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

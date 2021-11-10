@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStore } from "../../contexts/Store";
 
 import {
   FeaturedArticleContainer,
   FeaturedImg,
-  FeaturedContent
+  FeaturedContent,
+  Title,
+  ContentText,
+  ReadMore
 } from "./styled-components";
 
 const FeaturedArticle = () => {
   const store = useStore();
-  const { featuredArticle } = store;
+  const { featuredArticle, isLoaded } = store;
+
   const { fields } = featuredArticle;
+  console.log(fields);
 
   return (
     <FeaturedArticleContainer>
-      <FeaturedImg src='https://via.placeholder.com/100x100'></FeaturedImg>
-      <FeaturedContent>
-        <h2>{fields.title}</h2>
-        <p>{fields.content}</p>
-      </FeaturedContent>
+      {isLoaded && (
+        <>
+          <FeaturedImg src='https://via.placeholder.com/533x320'></FeaturedImg>
+          <FeaturedContent>
+            <Title>{fields.title}</Title>
+            <ContentText>{fields.content}</ContentText>
+            <ReadMore>Read more</ReadMore>
+          </FeaturedContent>
+        </>
+      )}
     </FeaturedArticleContainer>
   );
 };

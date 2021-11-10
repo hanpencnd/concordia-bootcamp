@@ -9,9 +9,9 @@ import {
 } from "./styled-components";
 
 const ArticleCard = ({ articles }) => {
-  console.log(articles);
   const articleFields = articles.map(article => article.fields);
   // const { fields } = articles;
+  console.log(articles);
   console.log(articleFields);
 
   return articleFields.map(field => {

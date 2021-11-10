@@ -41,7 +41,7 @@ export const getFeaturedArticle = async () => {
       GET,
       CONTENTFUL_URL + "&fields.featured=true"
     );
-    console.log(Object.values(response.items));
+    // console.log(Object.values(response.items));
     let newArr = Object.values(response.items).sort(
       (a, b) => a.fields.date > b.fields.date
     );

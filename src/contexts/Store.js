@@ -8,7 +8,8 @@ import {
 export const StoreContext = React.createContext();
 
 export const StoreProvider = ({ children }) => {
-  const [featuredArticle, setFeaturedArticle] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [featuredArticle, setFeaturedArticle] = useState([]);
   const [articles, setArticles] = useState([]);
   const [stackedArticles, setStackedArticles] = useState([]);
   const [skipNum, setSkipNum] = useState(0);
@@ -34,13 +35,15 @@ export const StoreProvider = ({ children }) => {
   useEffect(() => {
     (async function getFeatured() {
       setFeaturedArticle(await getFeaturedArticle());
+      setIsLoaded(true);
     })();
   }, []);
 
-  console.log(featuredArticle);
+  // console.log(featuredArticle);
   return (
     <StoreContext.Provider
       value={{
+        isLoaded,
         featuredArticle,
         // getFeaturedArticle,
         articles,

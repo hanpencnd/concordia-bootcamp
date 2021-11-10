@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import PaginatedArticleList from "./components/PaginatedArticleList";
 import FeaturedArticle from "./components/FeaturedArticle";
+import BlogTitle from "./components/BlogTitle";
 
 function App() {
   const store = useStore();
@@ -19,17 +20,13 @@ function App() {
       <GlobalStyle />
       <main className='App'>
         <Header />
-
-        {/* TODO: Blog things goes here. Use the components folder! */}
-
+        <BlogTitle />
+        <FeaturedArticle />
         <ArticleContainer>
-          <FeaturedArticle />
           <ArticleCard articles={articles} />
-
           <PaginatedArticleList />
         </ArticleContainer>
-
-        {/* <Footer /> */}
+        <Footer />
       </main>
     </>
   );

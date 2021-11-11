@@ -5,9 +5,8 @@ export const ArticleBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 520px;
-  height: 450px;
-  margin: 15px 10px;
+  max-width: 520px;
+  height: 500px;
   border: 1px solid transparent;
 
   &:hover {
@@ -20,12 +19,12 @@ export const ArticleBox = styled.div`
 `;
 
 export const ContentDiv = styled.div`
-  padding: 15px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 40%;
+  height: 100%;
 
   @media (max-width: 768px) {
     height: auto;
@@ -34,14 +33,15 @@ export const ContentDiv = styled.div`
 `;
 
 export const ArticleImg = styled.img`
-  width: 99.9%;
-  height: 60%;
+  width: 518px;
+  height: 280px;
 
   &:hover {
     opacity: 0.8;
   }
 
   @media (max-width: 768px) {
+    width: 100%;
     height: auto;
   }
 `;

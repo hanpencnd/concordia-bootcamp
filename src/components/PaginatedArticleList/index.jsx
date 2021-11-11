@@ -5,19 +5,32 @@ import ArticleCard from "../ArticleCard";
 import { ArticleListContainer, LoadMoreBtn } from "./styled-components";
 
 const PaginatedArticleList = () => {
-  const [counter, setCounter] = useState(1);
   const store = useStore();
-  const { stackedArticles, skipNum, setSkipNum, limitNum } = store;
+  const {
+    articles,
+    setArticles,
+    counter,
+    setCounter,
+    setSkipNum,
+    limitNum,
+    selectedCategory
+  } = store;
 
   const handleLoadMore = () => {
-    setSkipNum(skipNum => (skipNum = counter * limitNum));
-    setCounter(counter + 1);
-    // console.log(skipNum, limitNum, counter);
+    // check articles array length
+    // if already < 6 nothing happens
+    if (articles.length < 6) {
+      return;
+
+      // update states otherwise
+    } else {
+      setSkipNum(counter * limitNum);
+      setCounter(counter + 1);
+    }
   };
 
   return (
     <ArticleListContainer>
-      {skipNum > 0 && <ArticleCard articles={stackedArticles} />}
       <LoadMoreBtn onClick={handleLoadMore}>
         <h2>Load More</h2>
       </LoadMoreBtn>

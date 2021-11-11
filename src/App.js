@@ -9,23 +9,26 @@ import Footer from "./components/Footer";
 import PaginatedArticleList from "./components/PaginatedArticleList";
 import FeaturedArticle from "./components/FeaturedArticle";
 import BlogTitle from "./components/BlogTitle";
+import Categories from "./components/Categories";
 
 function App() {
   const store = useStore();
   const { articles } = store;
-  // console.log("TODO: use the store to create the base UI", store);
 
   return (
     <>
       <GlobalStyle />
       <main className='App'>
         <Header />
-        <BlogTitle />
-        <FeaturedArticle />
-        <ArticleContainer>
-          <ArticleCard articles={articles} />
-          <PaginatedArticleList />
-        </ArticleContainer>
+        <Container>
+          <BlogTitle />
+          <FeaturedArticle />
+          <Categories />
+          <ArticleContainer>
+            <ArticleCard articles={articles} />
+            <PaginatedArticleList />
+          </ArticleContainer>
+        </Container>
         <Footer />
       </main>
     </>

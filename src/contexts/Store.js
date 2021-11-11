@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  getAllArticles,
+  getCategoryNames,
   getPaginatedArticles,
-  getFeaturedArticle
+  getFeaturedArticle,
+  getArticlesByCategory
 } from "../services/contentful";
 
 export const StoreContext = React.createContext();
@@ -11,44 +12,74 @@ export const StoreProvider = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [featuredArticle, setFeaturedArticle] = useState([]);
   const [articles, setArticles] = useState([]);
-  const [stackedArticles, setStackedArticles] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [counter, setCounter] = useState(1);
   const [skipNum, setSkipNum] = useState(0);
   const limitNum = 6;
 
   useEffect(() => {
-    (async function fetchArticles() {
-      setArticles(await getAllArticles());
-    })();
+    const fetchCategoryNames = async () => {
+      setCategories(await getCategoryNames());
+    };
+    fetchCategoryNames();
   }, []);
 
   useEffect(() => {
-    (async function fetchArticles() {
-      setArticles([
-        ...articles,
-        ...(await getPaginatedArticles(limitNum, skipNum))
-      ]);
-      // setStackedArticles(stackedArticles => [...stackedArticles, ...articles]);
-    })();
+    console.log(skipNum);
+    const fetchArticles = async () => {
+      if (selectedCategory !== "all") {
+        return;
+      } else {
+        setArticles([
+          ...articles,
+          ...(await getPaginatedArticles(limitNum, skipNum))
+        ]);
+      }
+    };
+    fetchArticles();
   }, [skipNum]);
 
   // TODO: Update the method below to return the latest featured article from the list of articles
   useEffect(() => {
-    (async function getFeatured() {
+    const getFeatured = async () => {
       setFeaturedArticle(await getFeaturedArticle());
       setIsLoaded(true);
-    })();
+    };
+    getFeatured();
   }, []);
 
-  // console.log(featuredArticle);
+  useEffect(() => {
+    console.log(selectedCategory);
+    const getCategorized = async () => {
+      if (selectedCategory === "all") {
+        setArticles([
+          ...articles,
+          ...(await getPaginatedArticles(limitNum, skipNum))
+        ]);
+      } else {
+        setArticles([
+          ...articles,
+          ...(await getArticlesByCategory(limitNum, skipNum, selectedCategory))
+        ]);
+      }
+    };
+    getCategorized();
+  }, [selectedCategory, skipNum]);
+
   return (
     <StoreContext.Provider
       value={{
         isLoaded,
         featuredArticle,
-        // getFeaturedArticle,
         articles,
-        stackedArticles,
-        skipNum,
+        setArticles,
+        categories,
+        setCategories,
+        selectedCategory,
+        setSelectedCategory,
+        counter,
+        setCounter,
         setSkipNum,
         limitNum
       }}

@@ -13,9 +13,23 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Playfair Display', serif;
     }
 
-    body {
-    background-image: linear-gradient(white 600px, #ffeee2 650px, #ffeee2 90%, white);
-}
+ body {
+    background-image: linear-gradient(
+    white 580px,
+    #ffeee2 650px,
+    #ffeee2 85%,
+    white
+  );
+
+  @media (max-width: 768px) {
+    background-image: linear-gradient(
+      white 9%,
+      #ffeee2 10%,
+      #ffeee2 90%,
+      white
+    );
+  }
+ }
 `;
 
 export default GlobalStyle;

@@ -1,28 +1,43 @@
 import styled from "styled-components";
 
 export const FeaturedArticleContainer = styled.div`
-  width: 90%;
+  max-width: 1100px;
   height: 400px;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   margin: auto;
   padding: 40px 0;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    margin: auto;
+  }
 `;
 
 export const FeaturedImg = styled.img`
-  /* width: 500px; */
   height: 320px;
-  flex: 1;
+  /* width: 530px; */
+  width: 50%;
+  height: auto;
+  aspect-ratio: inherit;
   margin-right: 30px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const FeaturedContent = styled.div`
-  flex: 1;
+  flex-flow: 1;
 `;
 
 export const Title = styled.h1`
   cursor: pointer;
+
   &:hover {
     opacity: 0.8;
   }

@@ -4,19 +4,17 @@ const CONTENTFUL_URL = `https://cdn.contentful.com/spaces/6fmuqje9nkz0/environme
 
 // TODO: Update the method below to utilize contentful's pagination functionality to return only 6 entries
 //       NOTE: remember on "load more" it's 6 *additional* entries
-export const getAllArticles = async () => {
+
+export const getCategoryNames = async () => {
   try {
     const response = await request(GET, CONTENTFUL_URL);
-    let firstSix = [];
-    // console.log(response.items);
-    for (let i = 0; i < 6; i++) {
-      firstSix.push(response.items[i]);
-    }
-    // console.log(firstSix);
-    // return response.items;
-    return firstSix;
+    // let categoryNames = [];
+
+    // response.items.forEach(item => categoryNames.push(item.fields.category));
+
+    return response.items.map(item => item.fields.category);
   } catch (e) {
-    console.log("getAllArticles failed:", e);
+    console.log("getCategoryNames failed:", e);
   }
 };
 
@@ -25,7 +23,7 @@ export const getPaginatedArticles = async (limit, skip) => {
     // const response = await request(GET, CONTENTFUL_URL);
     const response = await request(
       GET,
-      `https://cdn.contentful.com/spaces/6fmuqje9nkz0/environments/master/entries?access_token=yNcU-W6qITUmC18PRtK6Gyy32Vy7oGLRAWzW-2zyUaM&content_type=blog-entry&limit=${limit}&&skip=${skip}`
+      CONTENTFUL_URL + `&limit=${limit}&&skip=${skip}`
     );
 
     return response.items;
@@ -41,23 +39,46 @@ export const getFeaturedArticle = async () => {
       GET,
       CONTENTFUL_URL + "&fields.featured=true"
     );
-    // console.log(Object.values(response.items));
-    let newArr = Object.values(response.items).sort(
-      (a, b) => a.fields.date > b.fields.date
-    );
-    console.log(newArr);
-    return newArr[0];
+
+    // parse data to sort timestamp
+    let dateArr = [];
+    let newestArticle;
+
+    // get date-only array and sort them
+    response.items.forEach(item => dateArr.push(item.fields.date));
+    dateArr.sort().reverse();
+
+    // assign newestArticle upon date match
+    response.items.forEach(item => {
+      if (item.fields.date === dateArr[0]) {
+        newestArticle = item;
+      }
+    });
+
+    return newestArticle;
   } catch (e) {
-    console.log("getArticlesByCategory failed:", e);
+    console.log("getFeaturedArticle failed:", e);
   }
 };
 
 // TODO: Using the category argument, update the method below by making a GET
 //       request and returning entries from contentful filtered by the category.
 //       NOTE: this method will need to be connected to ../contexts/Store!
-export const getArticlesByCategory = async category => {
-  return [];
+
+export const getArticlesByCategory = async (limit, skip, category) => {
+  try {
+    const response = await request(
+      GET,
+      CONTENTFUL_URL +
+        `&limit=${limit}&&skip=${skip}&fields.category=${category}`
+    );
+
+    return response.items;
+  } catch (e) {
+    console.log("getArticlesByCategory failed:", e);
+  }
 };
+// `&limit=${limit}&&skip=${skip}&fields.category=${category}`
 
 // Possibly useful documentation:
 // - https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters

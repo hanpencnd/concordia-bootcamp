@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const ArticleListContainer = styled.div`
-  background: #fdece1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   /* height: 100vh; */
   width: 100%;
+  background: transparent;
 `;
 
 export const LoadMoreBtn = styled.button`

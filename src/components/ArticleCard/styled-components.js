@@ -48,17 +48,27 @@ export const ArticleImg = styled.img`
 
 export const Title = styled.h1`
   line-height: 1.1em;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 25px;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
 export const Category = styled.p`
   font-size: 1.1em;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 15px;
     margin-top: 50px;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
